@@ -5,6 +5,12 @@
     text-space: -1;
 }
 
+*{
+    padding: 0;
+    margin: 0;
+
+}
+
 .heading-m {
     font-size: 24px;
     font-weight: bold;

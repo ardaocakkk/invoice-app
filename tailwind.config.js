@@ -22,7 +22,8 @@ module.exports = {
           '11': '#F8F8FB',
           '12': '#141625',
           'paid' : '#33D69F',
-          'pending' : '#FF8F00'
+          'pending' : '#FF8F00',
+          'draft' : '#373B53'
         }
     },
 

@@ -1,12 +1,12 @@
-import logo from '../assets/logo.svg'
-import MoonLogo from '../assets/icon-moon.svg'
-import ProfilePhoto from '../assets/image-avatar.jpg'
+import logo from '../../../assets/logo.svg'
+import MoonLogo from '../../../assets/icon-moon.svg'
+import ProfilePhoto from '../../../assets/image-avatar.jpg'
 import { Divider } from '@chakra-ui/react'
 export default function Sidebar() {
     return (
         <>
-            <aside className={'sidebar text-white'}>
-                <div className={'flex flex-row md:flex lg:h-screen lg:flex-col  bg-extend-04  justify-between lg:w-[103px] lg:rounded-tr-3xl lg:rounded-br-2xl '}>
+            <aside className={'sidebar text-white '}>
+                <div className={'flex flex-row md:flex lg:min-h-screen lg:flex-col  bg-extend-04  justify-between lg:w-[103px] lg:rounded-tr-3xl lg:rounded-br-2xl '}>
                     <div className={'relative justify-center items-center w-[72px] h-[72px] lg:h-[103px] lg:w-[103px]  '}>
                      <svg className={'absolute w-[28px] z-10 h-[28px] inset-0 lg:inset-10 m-auto lg:m-auto '} xmlns="http://www.w3.org/2000/svg" ><path fill="#FFF" fill-rule="evenodd" d="M20.513 0C24.965 2.309 28 6.91 28 12.21 28 19.826 21.732 26 14 26S0 19.826 0 12.21C0 6.91 3.035 2.309 7.487 0L14 12.9z"/></svg>
                      <div className={'h-[72px] w-[72px]  lg:w-[103px]  absolute bg-extend-01 block rounded-br-3xl rounded-tr-3xl'}></div>
