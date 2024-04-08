@@ -9,7 +9,7 @@ export default function MainLayout() {
         <>
             <div className="App font-spartan lg:flex bg-extend-11 ">
                 <Sidebar/>
-                <main className={'flex-1 flex lg:px-[252px] lg:pt-[12px] '}>
+                <main className={'flex-1 flex lg:px-[252px] lg:pt-[12px] bg-extend-11 '}>
                     <Outlet/>
                 </main>
             </div>

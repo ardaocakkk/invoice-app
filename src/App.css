@@ -5,9 +5,10 @@
     text-space: -1;
 }
 
-*{
+html{
     padding: 0;
     margin: 0;
+    background: #F8F8FB;
 
 }
 
