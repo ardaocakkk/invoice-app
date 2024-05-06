@@ -1,6 +1,7 @@
 /** @type {import('tailwindcss').Config} */
 const defaultTheme = require('tailwindcss/defaultTheme');
 module.exports = {
+  darkMode: 'selector',
   content: ["./src/**/*.{js,jsx,ts,tsx}"],
   theme: {
     extend: {
@@ -30,6 +31,34 @@ module.exports = {
 
     }
   },
-  plugins: [],
+  plugins: [
+      function ({addUtilities}) {
+    const newUtilities = {
+      ".scrollbar-thin" : {
+        ".scrollbar-thin" : {
+          scrollbarWidth : "thin",
+          scrollbarColor : "#DFE3FA"
+        },
+        ".scrollbar-webkit" : {
+          "&::-webkit-scrollbar" : {
+            width : "8px",
+            height : "112px"
+          },
+          "&::-webkit-scrollbar-track" : {
+            background : "#DFE3FA"
+          },
+            "&::-webkit-scrollbar-thumb" : {
+                background : "#7E88C3",
+              borderRadius : "8px",
+                border : "3px solid #DFE3FA"
+            }
+
+        }
+      }
+    }
+        addUtilities(newUtilities, ['responsive', 'hover'])
+      }
+
+  ],
 }
 
