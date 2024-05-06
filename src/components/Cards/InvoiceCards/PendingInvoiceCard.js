@@ -4,7 +4,7 @@ import {NavLink} from "react-router-dom";
 export default function PendingInvoiceCard() {
     return (
         <>
-            <div className={'w-[327px] md:w-full  bg-white rounded my-[16px] hover:border-extend-01 hover:border-2'}>
+            <div className={'w-[327px] md:w-full  bg-white rounded my-[16px] hover:border-extend-01 hover:border-2 hover:transition hover:duration-500'}>
                 <NavLink to={'/view-invoice'}>
                 <div className={'ml-[24px] pt-[25px] flex flex-col md:flex-row  justify-between md:items-center md:mb-[11px] '} >
                     <div className={'flex justify-between'}>

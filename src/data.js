@@ -1,4 +1,4 @@
-[
+var data = [
   {
     "id": "RT3080",
     "createdAt": "2021-08-18",
@@ -229,3 +229,4 @@
     "total": 3102.04
   }
 ]
+export default data;
