@@ -5,7 +5,7 @@ import {
     DrawerHeader,
     DrawerOverlay,
     DrawerContent,
-    DrawerCloseButton, Input, Button, useDisclosure, FormLabel, FormControl,
+    DrawerCloseButton, Input, Button, useDisclosure, FormLabel, FormControl,Flex
 } from '@chakra-ui/react'
 import {useRef, useState} from "react";
 import Sidebar from "../../../layouts/main/sidebar/Sidebar";
@@ -42,7 +42,10 @@ export default function MobileDrawerAdd(props) {
     })
 
     return (
+        <>
+
         <div className={'ml-10'}>
+
         <Drawer
             isOpen={props.isOpen}
             placement='left'
@@ -51,15 +54,18 @@ export default function MobileDrawerAdd(props) {
             scrollBehavior ={'inside'}
             blockScrollOnMount={false}
             size = {props.size}
+            margin={"2rem"}
         >
             <DrawerOverlay />
             <DrawerContent overflow={'scroll'} >
                 <div className={'block md:hidden'}>
                     <Sidebar/>
                 </div>
-                <div className={'w-[343px] md:w-[616px] '}>
+                <div className={'hidden lg:block'}>
+                </div>
+                <div className={'w-[343px] md:w-[616px] max-h-screen '}>
                     <div className={"ml-6 mt-[33px] "}>
-                        <div>
+                        <div onClick={props.onClose}>
                             <GoBackButton/>
 
                         </div>
@@ -340,6 +346,7 @@ export default function MobileDrawerAdd(props) {
             </DrawerContent>
         </Drawer>
         </div>
+        </>
     )
 
 }

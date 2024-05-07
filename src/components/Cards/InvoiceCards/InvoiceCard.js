@@ -9,7 +9,7 @@ export default function InvoiceCard(props) {
     return (
         <>
 
-          <div id={props.id} className={'w-[327px] md:w-full bg-white rounded my-[16px] hover:border-extend-01 hover:border-2 hover:transition hover:duration-500 dark:bg-extend-03 dark:pr-3'} >
+          <div id={props.id} className={'w-[327px] md:w-full bg-white rounded my-[16px] hover:transition hover:duration-500 hover:border-extend-01 hover:border-2 hover:rounded-lg  dark:bg-extend-03 dark:pr-3'} >
               <NavLink to={`/view-invoice/${props.id}`
               } >
 
