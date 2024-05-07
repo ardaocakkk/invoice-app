@@ -15,6 +15,8 @@ import MobileDrawerEdit from "../components/Drawer/Mobile/MobileDrawerEdit";
 import MobileDrawerAdd from "../components/Drawer/Mobile/MobileDrawerAdd";
 import data from "../data";
 import {useMediaQuery} from "react-responsive";
+import DeletionAlertButton from "../components/Buttons/DeletionAlertButton";
+import InvoiceMenuHelper from "../components/Helper/InvoiceMenuHelper";
 export default function ViewInvoice(props) {
 
     const {id} = useParams();
@@ -33,7 +35,8 @@ export default function ViewInvoice(props) {
 
     return (
         <>
-            <div className={'w-[327px] h-[44px] md:min-w-[688px] md:h-[55px] md:mx-auto  mt-[32px] mx-[24px] lg:w-[730px]   '}>
+
+            <div className={'w-[327px] h-[44px] md:min-w-[688px] md:h-[55px] md:mx-auto  mt-[32px] mx-[24px] lg:w-[730px]   dark:transition dark:duration-500 transition duration-500   '}>
                 <NavLink to={'/'}>
                 <div className={'flex items-center'}>
 
@@ -42,28 +45,23 @@ export default function ViewInvoice(props) {
                 </div>
                     </NavLink>
                 {/*Status Div*/}
-                <div className={'w-[327px] md:hidden h-[91px] bg-white flex items-center justify-between md:justify-normal rounded-xl pb-2 md:w-full'}>
+                <div className={'w-[327px] md:hidden h-[91px] bg-white flex items-center justify-between md:justify-normal rounded-xl pb-2 md:w-full dark:bg-extend-03 dark:transition dark:duration-500  '}>
                     <p className={'ml-[24px] '}>Status</p>
-                    <div className={'m-auto md:m-0 md:mr-8 justify-center w-[104px] h-[40px] bg-extend-pending bg-opacity-10 ml-[83px] mr-[24px] rounded items-center '}>
-                        <div className={'mt-[14px] flex w-[44px] h-[15px] justify-center items-center m-auto'}>
-                            <div className={'w-[8px] h-[8px] bg-extend-pending justify-center m-auto  rounded  '}></div>
-                            <p className={'heading-s text-extend-pending'}>{invoice.status}</p>
-                        </div>
-                    </div>
+
+                    <InvoiceMenuHelper
+                      status = {invoice.status}
+                    />
                 </div>
-                <div className={'w-[327px] hidden md:w-[688px] md:h-[88px] lg:w-[730px]  md:flex h-[91px] bg-white  items-center justify-between md:justify-between rounded-xl pb-2 '}>
+                <div className={'w-[327px] hidden md:w-[688px] md:h-[88px] lg:w-[730px]   md:flex h-[91px] bg-white  items-center justify-between md:justify-between rounded-xl pb-2  dark:transition dark:duration-500 dark:bg-extend-03  '}>
                     <div className={'flex items-center md:w-[159px] md:h-[40px]'}>
                         <div>
                     <p className={'ml-[24px] mr-3'}>Status</p>
                         </div>
-                    <div className={'m-auto justify-center items-center w-[104px] h-[40px] bg-extend-pending bg-opacity-10 my-auto rounded  '}>
-                        <div className={' flex m-auto w-full h-full justify-center items-center  '}>
-                            <div className={'w-[8px] h-[8px] bg-extend-pending justify-center   rounded  items-center '}></div>
-                            <p className={'heading-s text-extend-pending ml-3'}>{invoice.status}</p>
-                        </div>
+                    <InvoiceMenuHelper
+                      status = {invoice.status}
+                    />
                     </div>
-                    </div>
-                    <div className={' hidden md:flex w-[309px] bg-white '}>
+                    <div className={' hidden md:flex w-[309px] bg-white dark:bg-extend-03  dark:transition dark:duration-500 '}>
                         <div className={'mr-3'}>
                             <Button ref={btnRef} onClick={onOpen}  colorScheme={'gray'} rounded={'full'}> <p className={'text-extend-07'}>Edit</p> </Button>
                         </div>
@@ -86,6 +84,7 @@ export default function ViewInvoice(props) {
                                 />
                             ) : (
                                 <MobileDrawerEdit
+                                    size={'xl'}
                                     _invoice={InvoiceData}
                                     isOpen={isOpen}
                                     onClose={onClose}
@@ -94,7 +93,9 @@ export default function ViewInvoice(props) {
                             )}
                         </div>
                         <div className={'mr-3'}>
-                            <Button colorScheme={'red'} rounded={'full'}>Delete</Button>
+                            <DeletionAlertButton
+                                invoiceId = {id}
+                            />
                         </div>
                         <div>
                             <Button colorScheme={'purple'} rounded={'full'}>Mark As Paid</Button>
@@ -103,14 +104,14 @@ export default function ViewInvoice(props) {
 
                 </div>
                 {/*Invoice Info Div*/}
-                <div className={'mt-4 pl-6 text-extend-06 bg-white rounded-xl  '}>
+                <div className={'mt-4 pl-6 text-extend-06 bg-white rounded-xl  dark:bg-extend-03 dark:text-white  dark:transition dark:duration-500 '}>
                     {/*Invoice Location*/}
                     <div className={'pt-[25px] md:flex md:justify-between '}>
                         <div className={'mb-3'}>
-                            <h1 className={'heading-s text-black' }><span className={'text-extend-06'}>#</span> {invoice.id} </h1>
+                            <h1 className={'heading-s text-black dark:text-white  dark:transition dark:duration-500' }><span className={'text-extend-06'}>#</span> {invoice.id} </h1>
                             <p className={'text-extend-06'}>{invoice.description}</p>
                         </div>
-                        <div className={'md:mr-[32px] md:text-end'}>
+                        <div className={'md:mr-[32px] md:text-end dark:text-extend-05 dark:transition dark:duration-500'}>
                             <p>{invoice.senderAddress.street}</p>
                             <p>{invoice.senderAddress.city}</p>
                             <p>{invoice.senderAddress.postCode}</p>
@@ -119,21 +120,21 @@ export default function ViewInvoice(props) {
                         </div>
                     </div>
                 {/*  Invoice short Info  */}
-                    <div className={'grid mt-[31px] md:grid-cols-2 md:w-full gap-x-[115px]'}>
+                    <div className={'grid mt-[31px] md:grid-cols-2 md:w-full gap-x-[115px] dark:text-extend-05 dark:transition dark:duration-500 '}>
                         <div className={'grid grid-cols-2 md:grid-cols gap-x-[115px]'}>
                             <div className={''}>
                                 <div className={""}>
                                     <p>Invoice Date</p>
-                                    <h1 className={'heading-s text-black mt-[13px]'}>{invoice.createdAt}</h1>
+                                    <h1 className={'heading-s text-black mt-[13px] dark:text-white dark:transition dark:duration-500'}>{invoice.createdAt}</h1>
                                 </div>
                                 <div className={'mt-[31px]'}>
                                     <p>Payment Due</p>
-                                    <h1 className={'heading-s text-black mt-[13px]'}>{invoice.paymentDue}</h1>
+                                    <h1 className={'heading-s text-black mt-[13px] dark:text-white dark:transition dark:duration-500'}>{invoice.paymentDue}</h1>
                                 </div>
                             </div>
                             <div>
                                 <p>Bill To</p>
-                                <h1 className={'heading-s text-black mt-[13px]'}>{invoice.clientName}</h1>
+                                <h1 className={'heading-s text-black mt-[13px] dark:text-white'}>{invoice.clientName}</h1>
                                 <div className={'mt-[7px]'}>
                                     <p>{invoice.clientAddress.street}</p>
                                     <p>{invoice.clientAddress.city}</p>
@@ -145,15 +146,15 @@ export default function ViewInvoice(props) {
                         </div>
                         <div className={'pt-[32px] gap-[115px]'}>
                             <p>Sent To</p>
-                            <h1 className={'heading-s text-black mt-[13px]'}>{invoice.clientEmail}</h1>
+                            <h1 className={'heading-s text-black mt-[13px] dark:text-white'}>{invoice.clientEmail}</h1>
                         </div>
 
                     </div>
                 {/*  Invoice bill  */}
                     <div className={'pb-[12px] '}>
-                    <div className={'mt-[38px] w-[279px] h-[228px]  md:w-[624px] md:h-[264px]'}>
-                        <div className={'w-[279px] md:w-[624px] md:h-[184px]  bg-[#F9FAFE] rounded-tl-xl rounded-tr-xl pt-4 pl-4 pr-4 pb-4'}>
-                        <div className={'hidden  md:flex md:justify-between text-extend-07 '}>
+                    <div className={'mt-[38px] w-[279px] h-[228px]  md:w-[624px] md:h-[264px] '}>
+                        <div className={'w-[279px] md:w-[624px] md:h-[184px]  bg-[#F9FAFE] rounded-tl-xl rounded-tr-xl pt-4 pl-4 pr-4 pb-4 dark:bg-extend-04'}>
+                        <div className={'hidden  md:flex md:justify-between text-extend-07 dark:text-extend-05 '}>
                             <div>
                                 <p>Item Name</p>
                             </div>
@@ -175,17 +176,17 @@ export default function ViewInvoice(props) {
                                 return <div className={'flex items-center justify-between pb-3 '}>
                                     <div className={'md:flex justify-between md:w-full md:m-auto pt-4 '}>
 
-                                        <h1 className={'heading-s text-black md:w-1/3'}>{item.name}</h1>
+                                        <h1 className={'heading-s text-black dark:text-white md:w-1/3'}>{item.name}</h1>
                                         <p className={'heading-s md:hidden'} >{item.quantity} x £ {item.price}</p>
-                                        <div className={'md:flex justify-between hidden w-[300px] ml-[110px] '}>
+                                        <div className={'md:flex justify-between hidden w-[300px] ml-[110px] dark:text-extend-05'}>
                                             <div>
-                                                <p className={'heading-s'}>{item.quantity}</p>
+                                                <p className={'heading-s '}>{item.quantity}</p>
                                             </div>
                                             <div>
                                                 <p className={'heading-s'}>£ {item.price}</p>
                                             </div>
                                             <div>
-                                                <p className={'heading-s text-black'}>£ {item.total}</p>
+                                                <p className={'heading-s text-black dark:text-white'}>£ {item.total}</p>
                                             </div>
                                         </div>
                                     </div>
@@ -194,7 +195,7 @@ export default function ViewInvoice(props) {
                                 </div>
                             })}
                         </div>
-                        <div className={'w-[279px] h-[80px] md:w-[624px] md:h-[80px] bg-[#373B53] text-white flex justify-between items-center rounded-bl-xl rounded-br-xl'}>
+                        <div className={'w-[279px] h-[80px] md:w-[624px] md:h-[80px] bg-[#373B53] text-white flex justify-between items-center rounded-bl-xl rounded-br-xl dark:bg-extend-08'}>
                             <p className={'ml-[24px]'}><span className={'md:hidden'}>Grand Total</span> <span className={'hidden md:block'}>Amount Due</span></p>
                             <h1 className={'heading-m mr-[24px] '}>£ {invoice.total}</h1>
                         </div>
@@ -217,7 +218,7 @@ export default function ViewInvoice(props) {
                             />
                         ) : isTablet ? (
                             <MobileDrawerEdit
-                                size={"md"}
+                                size={"lg"}
                                 _invoice={InvoiceData}
                                 isOpen={isOpen}
                                 onClose={onClose}
@@ -225,6 +226,7 @@ export default function ViewInvoice(props) {
                             />
                         ) : (
                             <MobileDrawerEdit
+                                size={'xl'}
                                 _invoice={InvoiceData}
                                 isOpen={isOpen}
                                 onClose={onClose}
@@ -235,10 +237,12 @@ export default function ViewInvoice(props) {
                     </div>
 
                     <div className={'mr-3'}>
-                        <Button colorScheme={'red'} rounded={'xl'}>Delete</Button>
+                        <DeletionAlertButton
+                          invoiceId = {id}
+                        />
                     </div>
                     <div>
-                        <Button colorScheme={'purple'} rounded={'xl'}>Mark As Paid</Button>
+                        <Button colorScheme={'purple'} rounded={'full'}>Mark As Paid</Button>
                     </div>
                 </div>
 

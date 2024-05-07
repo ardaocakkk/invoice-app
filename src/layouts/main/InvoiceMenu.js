@@ -16,7 +16,7 @@ import {useLocation, useParams} from "react-router-dom";
 import {useMediaQuery} from "react-responsive";
 
 
-export default function InvoiceMenu() {
+export default function InvoiceMenu(props) {
     const { isOpen, onOpen, onClose } = useDisclosure();
     const btnRef = useRef();
     const isMobile = useMediaQuery({maxWidth: 767})
@@ -29,8 +29,8 @@ export default function InvoiceMenu() {
         <div className={'flex justify-between  '}>
             <div>
                 <h1 className={'heading-m'}>Invoices</h1>
-                <p className={"hidden md:block text-extend-06"}>There are 7 total invoices</p>
-                <p className={'text-extend-06 md:hidden'}>7 invoices</p>
+                <p className={"hidden md:block text-extend-06"}>There are {props.length} total invoices</p>
+                <p className={'text-extend-06 md:hidden'}>{props.length} invoices</p>
             </div>
             <div className={'flex items-center  '}>
                 <div className={'flex items-center mr-4'}>

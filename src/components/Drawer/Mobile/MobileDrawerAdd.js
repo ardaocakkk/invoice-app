@@ -16,7 +16,6 @@ export default function MobileDrawerAdd(props) {
     const btnRef = useRef();
 
     const [invoice, setInvoice] = useState(props._invoice)
-    console.log(invoice)
 
     const formik = useFormik({
         initialValues : {
@@ -324,10 +323,10 @@ export default function MobileDrawerAdd(props) {
                                     </div>
                                     <div className={'flex justify-end pt-[21px] pb-[21px]'}>
                                         <div className={'mr-4'}>
-                                            <Button onClick={props.onClose} colorScheme={'gray'} rounded={'xl'}><p className={'text-extend-07'}>Cancel</p></Button>
+                                            <Button onClick={props.onClose} colorScheme={'gray'} rounded={'full'}><p className={'text-extend-07'}>Cancel</p></Button>
                                         </div>
                                         <div>
-                                            <Button type={'submit'} colorScheme={'purple'} rounded={'xl'}>Apply Changes</Button>
+                                            <Button type={'submit'} colorScheme={'purple'} rounded={'full'}>Apply Changes</Button>
                                         </div>
                                     </div>
 

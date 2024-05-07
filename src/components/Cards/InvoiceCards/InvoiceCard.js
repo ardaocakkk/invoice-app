@@ -1,7 +1,7 @@
 import { Button, ButtonGroup } from '@chakra-ui/react'
 import {NavLink, useParams} from "react-router-dom";
 import ViewInvoice from "../../../pages/ViewInvoice";
-import Helper from "./Helper";
+import InvoiceCardHelper from "../../Helper/InvoiceCardHelper";
 
 
 export default function InvoiceCard(props) {
@@ -9,7 +9,7 @@ export default function InvoiceCard(props) {
     return (
         <>
 
-          <div id={props.id} className={'w-[327px] md:w-full bg-white rounded my-[16px] hover:border-extend-01 hover:border-2 hover:transition hover:duration-500'} >
+          <div id={props.id} className={'w-[327px] md:w-full bg-white rounded my-[16px] hover:border-extend-01 hover:border-2 hover:transition hover:duration-500 dark:bg-extend-03 dark:pr-3'} >
               <NavLink to={`/view-invoice/${props.id}`
               } >
 
@@ -24,7 +24,7 @@ export default function InvoiceCard(props) {
                       <p className={'text-extend-07 md:hidden'}>Due  {props.paymentDue}</p>
                       <h1 className={'heading-m'}>£{props.total}</h1>
                       </div>
-                        <Helper status={props.status}/>
+                        <InvoiceCardHelper status={props.status}/>
                           <svg width="7" className={"ml-2"} height="10" xmlns="http://www.w3.org/2000/svg"><path d="M1 1l4 4-4 4" stroke="#7C5DFA" stroke-width="2" fill="none" fill-rule="evenodd"/></svg>
                   </div>
               </div>
