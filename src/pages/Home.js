@@ -5,9 +5,14 @@ import DraftInvoiceCard from "../components/Cards/InvoiceCards/DraftInvoiceCard"
 import data from "../data";
 import {useEffect, useState} from "react";
 import EmptyMain from "../layouts/main/EmptyMain";
+import {useSelector} from "react-redux";
 export default function Home() {
 
-    var invoiceData = data;
+    //reverse invoices
+
+    const invoices = useSelector((state) => state.invoices.invoices)
+    const reversedInvoices = invoices.slice().reverse()
+    console.log(invoices)
 
 
 
@@ -15,20 +20,20 @@ export default function Home() {
         <>
             <div className={'w-[327px] h-[44px] md:min-w-[672px] md:h-[55px] md:mx-auto   mt-[32px] mx-[24px] lg:w-[730px] dark:bg-extend-08   dark:transition dark:duration-500 transition duration-500  '}>
                 <InvoiceMenu
-                  length = {invoiceData.length}
+                  length = {invoices.length}
                 />
 
 
 
 
-                    {(invoiceData.length === 0) && (
+                    {(invoices.length === 0) && (
                         <>
                         <EmptyMain/>
                         </>
                     ) || (
                         <>
-                                <div id={'custom-scroll'} className={' lg:mt-[32px] grid grid-cols-1 place-items-center lg:mx-auto items-center md:h-[760px] md:overflow-auto dark:transition dark:duration-500 transition duration-500'}>
-                            {invoiceData.map((invoice) => {
+                                <div id={'custom-scroll'} className={' lg:mt-[32px] grid grid-cols-1 place-items-center lg:mx-auto items-center md:h-[500px]  md:overflow-auto dark:transition dark:duration-500 transition duration-500'}>
+                            {reversedInvoices.map((invoice) => {
                                 return (
                                 <InvoiceCard
                                     key={invoice.id}

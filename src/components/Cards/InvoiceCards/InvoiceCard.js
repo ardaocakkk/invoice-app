@@ -24,7 +24,7 @@ export default function InvoiceCard(props) {
                       <p className={'text-extend-07 md:hidden'}>Due  {props.paymentDue}</p>
                       <h1 className={'heading-m'}>£{props.total}</h1>
                       </div>
-                        <InvoiceCardHelper status={props.status}/>
+                        <InvoiceCardHelper status={props?.status}/>
                           <svg width="7" className={"ml-2"} height="10" xmlns="http://www.w3.org/2000/svg"><path d="M1 1l4 4-4 4" stroke="#7C5DFA" stroke-width="2" fill="none" fill-rule="evenodd"/></svg>
                   </div>
               </div>

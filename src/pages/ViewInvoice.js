@@ -13,15 +13,15 @@ import {
 import {useRef, useState} from "react";
 import MobileDrawerEdit from "../components/Drawer/Mobile/MobileDrawerEdit";
 import MobileDrawerAdd from "../components/Drawer/Mobile/MobileDrawerAdd";
-import data from "../data";
 import {useMediaQuery} from "react-responsive";
 import DeletionAlertButton from "../components/Buttons/DeletionAlertButton";
 import InvoiceMenuHelper from "../components/Helper/InvoiceMenuHelper";
+import {useSelector} from "react-redux";
 export default function ViewInvoice(props) {
 
     const {id} = useParams();
-    var InvoiceData = data.find((data) => data.id === id);
-    const [invoice, setInvoice] = useState(InvoiceData);
+    const invoices = useSelector((state) => state.invoices.invoices)
+    const [invoice, setInvoice] = useState(invoices.find((invoice) => invoice.id === id));
     const isMobile = useMediaQuery({maxWidth: 767})
     const isTablet = useMediaQuery({ minWidth: 768, maxWidth: 1023 });
 
@@ -36,7 +36,7 @@ export default function ViewInvoice(props) {
     return (
         <>
 
-            <div className={'w-[327px] h-[44px] md:min-w-[688px] md:h-[55px] md:mx-auto  mt-[32px] mx-[24px] lg:w-[730px]   dark:transition dark:duration-500 transition duration-500   '}>
+            <div className={'w-[327px] h-[44px] md:min-w-[688px]  md:h-[600px] overflow-y-scroll overflow-x-hidden md:mx-auto  mt-[32px] mx-[24px] lg:w-[730px]   dark:transition dark:duration-500 transition duration-500   '}>
                 <NavLink to={'/'}>
                 <div className={'flex items-center'}>
 
@@ -45,7 +45,7 @@ export default function ViewInvoice(props) {
                 </div>
                     </NavLink>
                 {/*Status Div*/}
-                <div className={'w-[327px] md:hidden h-[91px] bg-white flex items-center justify-between md:justify-normal rounded-xl pb-2 md:w-full dark:bg-extend-03 dark:transition dark:duration-500  '}>
+                <div className={'w-[327px] md:hidden h-[91px]  bg-white flex items-center justify-between md:justify-normal rounded-xl pb-2 md:w-full dark:bg-extend-03 dark:transition dark:duration-500  '}>
                     <p className={'ml-[24px] '}>Status</p>
 
                     <InvoiceMenuHelper
@@ -69,7 +69,7 @@ export default function ViewInvoice(props) {
                             {isMobile ? (
                                 <MobileDrawerEdit
                                     size={"full"}
-                                    _invoice={InvoiceData}
+                                    _invoice={invoice}
                                     isOpen={isOpen}
                                     onClose={onClose}
                                     finalFocusRef={btnRef}
@@ -77,7 +77,7 @@ export default function ViewInvoice(props) {
                             ) : isTablet ? (
                                 <MobileDrawerEdit
                                     size={"lg"}
-                                    _invoice={InvoiceData}
+                                    _invoice={invoice}
                                     isOpen={isOpen}
                                     onClose={onClose}
                                     finalFocusRef={btnRef}
@@ -85,7 +85,7 @@ export default function ViewInvoice(props) {
                             ) : (
                                 <MobileDrawerEdit
                                     size={'xl'}
-                                    _invoice={InvoiceData}
+                                    _invoice={invoice}
                                     isOpen={isOpen}
                                     onClose={onClose}
                                     finalFocusRef={btnRef}
@@ -211,7 +211,7 @@ export default function ViewInvoice(props) {
                         {isMobile ? (
                             <MobileDrawerEdit
                                 size={"full"}
-                                _invoice={InvoiceData}
+                                _invoice={invoice}
                                 isOpen={isOpen}
                                 onClose={onClose}
                                 finalFocusRef={btnRef}
@@ -219,7 +219,7 @@ export default function ViewInvoice(props) {
                         ) : isTablet ? (
                             <MobileDrawerEdit
                                 size={"lg"}
-                                _invoice={InvoiceData}
+                                _invoice={invoice}
                                 isOpen={isOpen}
                                 onClose={onClose}
                                 finalFocusRef={btnRef}
@@ -227,7 +227,7 @@ export default function ViewInvoice(props) {
                         ) : (
                             <MobileDrawerEdit
                                 size={'xl'}
-                                _invoice={InvoiceData}
+                                _invoice={invoice}
                                 isOpen={isOpen}
                                 onClose={onClose}
                                 finalFocusRef={btnRef}
